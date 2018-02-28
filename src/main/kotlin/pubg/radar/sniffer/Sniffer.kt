@@ -140,9 +140,8 @@ class Sniffer {
             val ip = packet[IpPacket::class.java]
             val udp = udp_payload(packet) ?: return@loop
             val raw = udp.payload.rawData
-            if (ip.header.srcAddr == targetAddr) {
-              if (raw.size == 44)
-                parseSelfLocation(raw)
+            if (raw.size == 44) {
+              parseSelfLocation(raw)
             } else if (udp.header.srcPort.valueAsInt() in 7000..7999)
               proc_raw_packet(raw)
           } catch (e: Exception) {
