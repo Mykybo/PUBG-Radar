@@ -1,5 +1,6 @@
 package pubg.radar.struct.cmd
 
+import com.badlogic.gdx.math.Vector2
 import pubg.radar.*
 import pubg.radar.deserializer.ROLE_MAX
 import pubg.radar.deserializer.channel.ActorChannel.Companion.actors
@@ -14,21 +15,26 @@ import pubg.radar.struct.cmd.CMD.propertyObject
 import pubg.radar.struct.cmd.CMD.propertyRotator
 import pubg.radar.struct.cmd.CMD.propertyVector100
 import pubg.radar.struct.cmd.CMD.repMovement
+import pubg.radar.struct.cmd.PlayerStateCMD.selfID
 import java.util.concurrent.ConcurrentHashMap
+var selfDirection = 0f
+val selfCoords = Vector2()
+var selfAttachTo: Actor? = null
+
 
 object ActorCMD: GameListener {
   init {
     register(this)
   }
-  
+
   override fun onGameOver() {
     actorWithPlayerState.clear()
     playerStateToActor.clear()
   }
-  
+
   val actorWithPlayerState = ConcurrentHashMap<NetworkGUID, NetworkGUID>()
   val playerStateToActor = ConcurrentHashMap<NetworkGUID, NetworkGUID>()
-  
+
   fun process(actor: Actor, bunch: Bunch, waitingHandle: Int): Boolean {
     with(bunch) {
       when (waitingHandle) {
@@ -71,6 +77,14 @@ object ActorCMD: GameListener {
           if (actor.attachTo != null)
             actors[actor.attachTo!!]?.beAttached = false
           actor.attachTo = attachTo
+
+          if (actor.netGUID == selfID) {
+            selfAttachTo = if (attachTo != null)
+              actors[actor.attachTo!!]
+            else
+              null
+          }
+          bugln { ",attachTo [$actor---------> $a ${guidCache.getObjectFromNetGUID(a)} ${actors[a]}" }
         }
         8 -> {
           val locationOffset = propertyVector100()
