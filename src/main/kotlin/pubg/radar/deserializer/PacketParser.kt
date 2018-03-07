@@ -93,6 +93,7 @@ fun Buffer.proc_raw_packet(client: Boolean) {
         continue
       }
     }
+    bugln { "receive chIndex=$chIndex,chSequence=$chSequence,chType=$chType,bReliable=$bReliable,bOpen=$bOpen,bClose=$bClose,bPartial=$bPartial,bPartialIntial=$bPartialInitial,bPartialFinal=$bPartialFinal" }
 
     if (chIndex !in channels) {
       when (chType) {
@@ -134,7 +135,6 @@ fun Buffer.proc_raw_packet(client: Boolean) {
             bHasPackageMapExports, bHasMustBeMappedGUIDs
         )
         chan.ReceivedRawBunch(bunch)
-      } catch (e: IndexOutOfBoundsException) {
       } catch (e: Exception) {
       }
     }
