@@ -8,7 +8,7 @@ import pubg.radar.struct.cmd.CMD.propertyVector100
 import pubg.radar.struct.cmd.CMD.repMovement
 
 object APawnCMD {
-  fun process(actor: Actor, bunch: Bunch, waitingHandle: Int): Boolean {
+  fun process(actor: Actor, bunch: Bunch, waitingHandle: Int, data: HashMap<String, Any?>): Boolean {
     with(bunch) {
       when (waitingHandle) {
         1 -> if (readBit()) {//bHidden
@@ -32,7 +32,6 @@ object APawnCMD {
           repMovement(actor)
           with(actor) {
             when (Type) {
-              DroopedItemGroup -> ActorChannel.droppedItemLocation[netGUID]?.first!!.set(location)
               AirDrop -> ActorChannel.airDropLocation[netGUID] = location
               Other -> {
               }
