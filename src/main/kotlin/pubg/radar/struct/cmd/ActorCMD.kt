@@ -92,7 +92,7 @@ object ActorCMD: GameListener {
           }
         }
         9 -> propertyVector100()
-        10 -> propertyRotator()
+        10 -> readRotationShort()
         11 -> {
           val attachSocket = propertyName()
         }
