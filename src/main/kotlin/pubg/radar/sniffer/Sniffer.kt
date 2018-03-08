@@ -124,7 +124,7 @@ class Sniffer {
     fun sniffLocationOnline() {
       val handle = nif.openLive(snapLen, mode, timeout)
       val filter = when (sniffOption) {
-        PortFilter -> "udp src portrange 7000-7999"
+        PortFilter -> "udp portrange 7000-7999"
         PPTPFilter -> "ip[9]=47"
       }
       handle.setFilter(filter, OPTIMIZE)
