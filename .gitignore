@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 .idea
-=======
 /nbproject/private/
->>>>>>> linux
+target
+.settings
+.classpath
