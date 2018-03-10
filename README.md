@@ -14,3 +14,7 @@ Example:
 ./arp.sh 192.168.0.23
 
 ./run.sh 192.168.0.23
+
+Note:
+
+you should change the interface name in the scripts, mine was enp0s25
