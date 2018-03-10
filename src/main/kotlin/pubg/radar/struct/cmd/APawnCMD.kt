@@ -49,7 +49,6 @@ object APawnCMD {
           if (actor.attachParent != null)
             actors[actor.attachParent!!]?.attachChildren?.remove(actor.netGUID)
           actor.attachParent = attachTo
-          bugln { ",attachTo [$actor---------> $a ${NetGUIDCache.guidCache.getObjectFromNetGUID(a)} ${ActorChannel.actors[a]}" }
         }
         8 -> {
           val locationOffset = propertyVector100()

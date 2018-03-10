@@ -93,7 +93,6 @@ fun Buffer.proc_raw_packet(client: Boolean) {
         continue
       }
     }
-    bugln { "receive chIndex=$chIndex,chSequence=$chSequence,chType=$chType,bReliable=$bReliable,bOpen=$bOpen,bClose=$bClose,bPartial=$bPartial,bPartialIntial=$bPartialInitial,bPartialFinal=$bPartialFinal" }
 
     if (chIndex !in channels) {
       when (chType) {
@@ -104,7 +103,6 @@ fun Buffer.proc_raw_packet(client: Boolean) {
 
         }
         else -> {
-          bugln { "create chIndex=$chIndex,chSequence=$chSequence,chType=$chType" }
           if (chType == CHTYPE_NONE)
             println("$chSequence lost the first actor creation bunch. just create as we need it.")
           inChannels[chIndex] = ActorChannel(chIndex, true)

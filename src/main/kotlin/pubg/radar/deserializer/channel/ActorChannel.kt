@@ -71,7 +71,7 @@ class ActorChannel(ChIndex: Int, client: Boolean = true): Channel(ChIndex, CHTYP
     val actor = actor!!
     if (actor.Type == DroppedItem && bunch.bitsLeft() == 0)
       droppedItemLocation.remove(droppedItemToItem[actor.netGUID] ?: return)
-  
+
     while (bunch.notEnd()) {
       //header
       val bHasRepLayout = bunch.readBit()
@@ -85,7 +85,6 @@ class ActorChannel(ChIndex: Int, client: Boolean = true): Channel(ChIndex, CHTYP
           if (_subobj == null)// The server should never need to create sub objects
             continue
           repObj = _subobj
-          bugln { "$actor hasSubObj $repObj" }
         } else {
           val bStablyNamed = bunch.readBit()
           if (bStablyNamed) {// If this is a stably named sub-object, we shouldn't need to create it

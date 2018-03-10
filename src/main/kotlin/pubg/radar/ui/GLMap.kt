@@ -405,7 +405,7 @@ class GLMap: InputAdapter(), ApplicationListener, GameListener {
           val items = it._2
 
           val finalColor = when {
-            "98k" in items || "m416" in items || "Choke" in items || "scar" in items -> rareWeaponColor
+            "98k" in items || "m416" in items || "scar" in items -> rareWeaponColor
             "armor3" in items || "helmet3" in items -> rareArmorColor
             "4x" in items || "8x" in items -> rareScopeColor
             "Extended" in items || "Compensator" in items -> rareAttachColor

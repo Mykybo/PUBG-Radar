@@ -91,7 +91,6 @@ object ActorCMD: GameListener {
             else
               null
           }
-          bugln { ",attachTo [$actor---------> $a ${guidCache.getObjectFromNetGUID(a)} ${actors[a]}" }
         }
         8 -> {
           val locationOffset = propertyVector100()
