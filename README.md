@@ -1,5 +1,7 @@
+# NO LONGER WORKS - PACKETS ARE NOW ENCRYPTED
+
 # PUBG-Radar
-PUBG-Radar by sniffering udp packet
+PUBG-Radar by sniffing udp packet
 
 Written in Kotlin
 
